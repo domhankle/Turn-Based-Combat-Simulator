@@ -18,14 +18,14 @@ class Ability
 	protected:
 
 		std::string name;
-		
+
 	public:
 		
 		/**
-		 * @brief Default Constructor not available for use.
+		 * @brief Constructor set to default use.
 		 * 
 		 */
-		Ability() = delete;
+		Ability() = default;
 
 		/**
 		 * @brief Destructor is set to default use.
@@ -43,7 +43,7 @@ class Ability
 		/**
 		 * @brief Set the name of this ability.
 		 * 
-		 * @param aName The name to set as this abilities name.
+		 * @param aName The std::string value to set as this abilities name.
 		 */
 		void SetName(std::string aName);
 
