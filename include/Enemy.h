@@ -52,9 +52,10 @@ class Enemy : Entity
 /**
  * @brief Overload of the stream insertion operator for the Enemy class.
  * 
- * @param outs The output stream that the string 
- * @param src 
- * @return std::ostream& 
+ * @param outs The output stream that the string representation will be sent to.
+ * @param src The Enemy object that is going to be represented as a string
+ * 
+ * @return The output stream that contains the string representation of the Enemy object.
  */
 inline
 std::ostream& operator<<(std::ostream& outs, const Enemy& src) 

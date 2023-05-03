@@ -20,3 +20,7 @@ void Ability::SetType(bool offensiveType)
     this -> isOffensive = offensiveType;
 }
 
+void Ability::display(std::ostream& outs) const
+{
+    outs << "BASE CLASS DISPLAY CALL\n";
+}

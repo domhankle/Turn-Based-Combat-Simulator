@@ -31,7 +31,7 @@ class Ability
 		 * @brief Destructor is set to default use.
 		 * 
 		 */
-		~Ability() = default;
+		virtual ~Ability() = default;
 		
 		/**
 		 * @brief Pure Virtual Function - Each type of ability will have the opportunity
@@ -39,6 +39,13 @@ class Ability
 		 * 
 		 */
 		virtual void LevelUp() = 0;
+
+		/**
+		 * @brief Create a string representation of the Ability.
+		 * 
+		 * @param outs The output stream that the string representation will be sent to.
+		 */
+		virtual void display(std::ostream& outs) const;
 
 		/**
 		 * @brief Set the name of this ability.
@@ -71,5 +78,12 @@ class Ability
 
 	
 };
+
+inline
+std::ostream& operator<<(std::ostream& outs, const Ability& src)
+{
+	src.display(outs);
+	return outs;
+}
 
 #endif

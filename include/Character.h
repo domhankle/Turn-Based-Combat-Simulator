@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Entity.h"
+#include "Ability.h"
 
 /**
  * @brief A class that represents the user that will attack the enemies throughout
@@ -11,9 +13,15 @@
  */
 class Character : Entity
 {
+    public:
+
+        using iterator = std::vector<Ability>::iterator;
+        using const_iterator = std::vector<Ability>::const_iterator;
+
     private:
     
         int level;
+        std::vector<Ability> AbilitySet;
 
     public:
 
@@ -33,8 +41,6 @@ class Character : Entity
 
         /**
          * @brief Destroy a Character object.
-         * 
-         * 
          */
         ~Character();
 
@@ -67,6 +73,7 @@ class Character : Entity
          * 
          */
         void SetLevel(int aLevel);
+
         
 };
 
