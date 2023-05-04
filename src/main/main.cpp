@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../include/AbilitySet.h"
-#include "../include/OffensiveAbility.h"
+#include "../../include/Ability/AbilitySet.h"
+#include "../../include/Ability/OffensiveAbility.h"
 
 int main()
 {

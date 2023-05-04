@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include "Entity.h"
-#include "Ability.h"
+#include "../Ability/Ability.h"
 
 /**
  * @brief A class that represents the user that will attack the enemies throughout

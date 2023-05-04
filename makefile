@@ -1,13 +1,16 @@
+INC_DIR_FLAGS=$(wildcard -Iinclude/*/)
 CC=g++
-CCFLAGS=-Wall -Wextra -pedantic -fsanitize=leak,address -g
+CCFLAGS=-Wall -Wextra -pedantic -fsanitize=leak,address -g $(INC_DIR_FLAGS)
 
 SRCDIR=./src
 OBJDIR=./obj
-INCDIR=./include
 
-SRCS:=$(wildcard $(SRCDIR)/*.cpp)
+SRCS:=$(wildcard $(SRCDIR)/*/*.cpp)
 OBJS:=$(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRCS))
-INCS:=$(wildcard $(INCDIR)/*.h)
+DEPS:=$(OBJS:.o=.d)
+
+SRC_SUB_DIRS:=$(wildcard $(SRCDIR)/*/)
+OBJ_SUB_DIRS:=$(patsubst $(SRCDIR)/%/, $(OBJDIR)/%/, $(SRC_SUB_DIRS))
 
 TARGET = turn_based_combat_simulator
 
@@ -17,19 +20,22 @@ TARGET = turn_based_combat_simulator
 all: $(TARGET)
 	./$(TARGET)
 	
-$(TARGET): $(INCS) $(OBJS)	
+$(TARGET): $(OBJS)	
 	$(CC) $(CCFLAGS) $^ -o $@
 	@echo "BUILD SUCCESS"
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJ_SUB_DIRS)
 	$(CC) $(CCFLAGS) -c $< -o $@ 
 
-$(OBJDIR): 
-	mkdir -p $(OBJDIR)
+$(OBJ_SUB_DIRS): 
+	mkdir -p $@
+	
+-include $(DEPS)
 
 clean:
 	rm -rf $(OBJDIR) $(TARGET)
 	@echo "CLEAN COMPLETE"
+	@echo 
 
 
 

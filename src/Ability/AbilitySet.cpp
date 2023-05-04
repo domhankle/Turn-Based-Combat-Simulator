@@ -1,4 +1,4 @@
-#include "../include/AbilitySet.h"
+#include "../../include/Ability/AbilitySet.h"
 
 AbilitySet::AbilitySet()
 {

@@ -1,4 +1,4 @@
-#include "../include/Character.h"
+#include "../../include/Entity/Character.h"
 
 Character::Character(std::string aName)
     : level(1)

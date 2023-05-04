@@ -1,4 +1,5 @@
-#include "../include/Enemy.h"
+#include "../../include/Entity/Entity.h"
+#include "../../include/Entity/Enemy.h"
 
 Enemy::Enemy(std::string aName, int numHealthPoints)
 {

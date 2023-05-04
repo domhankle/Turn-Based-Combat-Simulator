@@ -1,4 +1,4 @@
-#include "../include/OffensiveAbility.h"
+#include "../../include/Ability/OffensiveAbility.h"
 
 
 OffensiveAbility::OffensiveAbility()

@@ -1,4 +1,4 @@
-#include "../include/Ability.h"
+#include "../../include/Ability/Ability.h"
 
 std::string Ability::GetName() const
 {
