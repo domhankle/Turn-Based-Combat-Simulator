@@ -1,4 +1,4 @@
-INC_DIR_FLAGS=$(wildcard -Iinclude/*/)
+INC_DIR_FLAGS:=$(wildcard -Iinclude/*/)
 CC=g++
 CCFLAGS=-Wall -Wextra -pedantic -fsanitize=leak,address -g $(INC_DIR_FLAGS)
 
@@ -25,7 +25,7 @@ $(TARGET): $(OBJS)
 	@echo "BUILD SUCCESS"
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJ_SUB_DIRS)
-	$(CC) $(CCFLAGS) -c $< -o $@ 
+	$(CC) $(CCFLAGS) -MMD -MP -c $< -o $@ 
 
 $(OBJ_SUB_DIRS): 
 	mkdir -p $@
@@ -35,7 +35,6 @@ $(OBJ_SUB_DIRS):
 clean:
 	rm -rf $(OBJDIR) $(TARGET)
 	@echo "CLEAN COMPLETE"
-	@echo 
 
 
 

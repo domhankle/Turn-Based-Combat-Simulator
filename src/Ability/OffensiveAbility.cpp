@@ -15,6 +15,10 @@ OffensiveAbility::OffensiveAbility(std::string aName, float damageAmount)
     this -> SetType(true);
 }
 
+OffensiveAbility::OffensiveAbility(const OffensiveAbility& src)
+    : Ability(src), damage(src.GetDamage())
+{}
+
 void OffensiveAbility::display(std::ostream& outs) const
 {
     outs << "Name: " << this -> GetName() << " (OFFENSIVE)\n"

@@ -2,12 +2,32 @@
 
 AbilitySet::AbilitySet()
 {
-    std::cout << "CONSTRUCTION FOR NEW ABILITY SET\n";
 }
 
 AbilitySet::AbilitySet(const AbilitySet& src)
 {
-    std::cout << "COPY CONSTRUCTION FOR NEW ABILITY SET\n";
+    for(const std::unique_ptr<Ability>& abilityPtr : src)
+    {
+        if(dynamic_cast<OffensiveAbility*>(abilityPtr.get()))
+        {
+            this -> add(std::make_unique<OffensiveAbility>(*dynamic_cast<OffensiveAbility*>(abilityPtr.get())));
+        }
+        else if(dynamic_cast<DefensiveAbility*>(abilityPtr.get()))
+        {
+            this -> add(std::make_unique<DefensiveAbility>(*dynamic_cast<DefensiveAbility*>(abilityPtr.get())));
+        }
+        else
+        {
+            std::cerr << "Error in copying Ability Set. This type of Ability object has not had implementation\n"
+                      << "to the copy constructor yet for the AbilitySet class.";
+            system("EXIT_FAILURE");
+        }
+    }
+}
+
+AbilitySet::AbilitySet(AbilitySet&& src)
+{
+   this -> knownAbilities = std::move(src.knownAbilities);
 }
 
 AbilitySet::iterator AbilitySet::begin()
@@ -40,12 +60,24 @@ void AbilitySet::display(std::ostream& outs) const
 {
     if(this -> knownAbilities.empty())
     {
-        std::cout << "No abilities known!\n";
+        outs << "No abilities known!\n";
         return;
     }
 
-    for(const std::unique_ptr<Ability>& ptrToAbility : knownAbilities)
+    for(const std::unique_ptr<Ability>& ptrToAbility : *this)
     {
-        std::cout << *ptrToAbility << '\n';
+        outs << *ptrToAbility << '\n';
     }
+}
+
+AbilitySet& AbilitySet::operator=(AbilitySet rhs)
+{
+    swap(*this, rhs);
+
+    return *this;
+}
+
+void swap(AbilitySet& lhs, AbilitySet& rhs)
+{
+    std::swap(lhs.knownAbilities, rhs.knownAbilities);
 }

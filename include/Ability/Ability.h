@@ -28,6 +28,13 @@ class Ability
 		Ability() = default;
 
 		/**
+		 * @brief Copy Constructor set to default use.
+		 * 
+		 * @param src The source to copy.
+		 */
+		Ability(const Ability& src) = default;
+
+		/**
 		 * @brief Destructor is set to default use.
 		 * 
 		 */
@@ -35,7 +42,7 @@ class Ability
 		
 		/**
 		 * @brief Pure Virtual Function - Each type of ability will have the opportunity
-		 * to level up and increase it's abilities stats occasionally.
+		 * 		  to level up and increase it's abilities stats occasionally.
 		 * 
 		 */
 		virtual void LevelUp() = 0;
@@ -76,9 +83,16 @@ class Ability
 		 */
 		bool IsOffensiveAbiility() const;		
 
-	
 };
 
+/**
+ * @brief Stream insertion operator for Ability objects.
+ * 
+ * @param outs The output stream to send the string representation of the Ability to.
+ * @param src The Ability object to retrieve a string representation of.
+ * 
+ * @return The output stream that contains the string representation of the Ability object.
+ */
 inline
 std::ostream& operator<<(std::ostream& outs, const Ability& src)
 {

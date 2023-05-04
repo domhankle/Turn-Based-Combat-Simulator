@@ -24,3 +24,8 @@ void Ability::display(std::ostream& outs) const
 {
     outs << "BASE CLASS DISPLAY CALL\n";
 }
+
+void Ability::LevelUp()
+{
+    std::cout << "Leveling up " << this -> GetName() << "...\n";
+}

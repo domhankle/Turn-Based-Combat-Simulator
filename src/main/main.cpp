@@ -1,17 +1,22 @@
 #include <iostream>
+
 #include "../../include/Ability/AbilitySet.h"
-#include "../../include/Ability/OffensiveAbility.h"
 
 int main()
 {
+	
+	AbilitySet set;
 
-	AbilitySet setOfAbilities;
+	set.add(std::unique_ptr<DefensiveAbility>(new DefensiveAbility("WALL", 10)));
+	set.add(std::unique_ptr<OffensiveAbility>(new OffensiveAbility("BOLT", 35.5)));
 
-	std::unique_ptr<Ability> ptr1(new OffensiveAbility("BOLT", 35.5));
+	AbilitySet set2(set);
 
-	setOfAbilities.add(std::unique_ptr<Ability>(new OffensiveAbility("BOLT", 35.5)));
+	AbilitySet set3;
 
-	std::cout << setOfAbilities;
+	set3 = set2;
+	std::cout << set << set2 << set3;
+
 	return 0;
 }
 

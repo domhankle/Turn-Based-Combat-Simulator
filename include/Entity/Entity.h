@@ -30,7 +30,7 @@ class Entity
          * @brief Destructor has default use.
          * 
          */
-        ~Entity() = default;
+        virtual ~Entity() = default;
 
         /**
          * @brief Get the name of the Entity.

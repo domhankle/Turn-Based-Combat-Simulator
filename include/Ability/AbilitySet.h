@@ -2,6 +2,8 @@
 #define ABILITY_SET_H
 
 #include "Ability.h"
+#include "OffensiveAbility.h"
+#include "DefensiveAbility.h"
 #include <vector>
 #include <memory>
 
@@ -34,12 +36,16 @@ class AbilitySet
          */
         ~AbilitySet() = default;
 
+        AbilitySet(const AbilitySet& src);
+
         /**
-         * @brief Construct a new Ability Set that is a copy of an existing Ability Set.
+         * @brief Construct a new Ability Set that is a copy of an existing Ability Set. Move constructor
+         *        is necessary due to the use of unique_ptr. Note that the previous ability set will get
+         *        removed after use of this constructor.
          * 
          * @param src The existing Ability Set that is to be copied.
          */
-        AbilitySet(const AbilitySet& src);
+        AbilitySet(AbilitySet&& src);
 
         /**
          * @brief Get a reference to the first ability in the Ability Set.
@@ -82,6 +88,24 @@ class AbilitySet
          * @param outs The output stream that the string representation will be sent to.
          */
         void display(std::ostream& outs) const;
+
+        /**
+         * @brief Assignment operator overload for Ability Set objects.
+         * 
+         * @param rhs The Ability Set we want to assign the current object to.
+         * @return A reference to our new Ability object.
+         */
+        AbilitySet& operator=(AbilitySet rhs);
+
+        /**
+         * @brief Friend Function - Used in conjunction with assignment overloader.
+         * 
+         * @param lhs - Left side of Obj1 = Obj2
+         * @param rhs - Right side of Obj1 = Obj2
+         */
+        friend
+        void swap(AbilitySet& lhs, AbilitySet& rhs);
+
 
 };
 
