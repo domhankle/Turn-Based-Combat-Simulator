@@ -10,6 +10,7 @@ DefensiveAbility::DefensiveAbility(std::string aName, float resistanceAmount)
     : resistance_points(resistanceAmount)
 {
     this -> SetName(aName);
+    this -> SetType(false);
 }
 
 DefensiveAbility::DefensiveAbility(const DefensiveAbility& src)
@@ -33,6 +34,6 @@ void DefensiveAbility::LevelUp()
 
 void DefensiveAbility::display(std::ostream& outs) const
 {
-    outs << "Name: " << this -> GetName() << "(DEFENSIVE)\n"
+    outs << "Name: " << this -> GetName() << " (DEFENSIVE)\n"
          << "Resistance: " << this -> GetResistancePoints() << "\n";
 }

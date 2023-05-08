@@ -1,5 +1,9 @@
 #include "../../include/Entity/Entity.h"
 
+Entity::Entity(std::string aName, int healthAmount)
+    : name(aName), health(healthAmount)
+{}
+
 std::string Entity::GetName() const
 {
     return this -> name;
@@ -20,4 +24,8 @@ void Entity::SetHealth(int numHealthPoints)
     this -> health = numHealthPoints;
 }
 
+void Entity::Display(std::ostream& outs) const
+{
+    outs << "BASE CLASS DISPLAY CALL\n";
+}
 

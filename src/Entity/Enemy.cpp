@@ -2,15 +2,13 @@
 #include "../../include/Entity/Enemy.h"
 
 Enemy::Enemy(std::string aName, int numHealthPoints)
+    : Entity(aName, numHealthPoints)
 {
-    this -> SetName(aName);
-    this -> SetHealth(numHealthPoints);
 }
 
 Enemy::Enemy(const Enemy& src)
+    : Entity(src.GetName(), src.GetHealth())
 {
-    this -> SetHealth(src.GetHealth());
-    this -> SetName(src.GetName());
 }
 
 Enemy::~Enemy()

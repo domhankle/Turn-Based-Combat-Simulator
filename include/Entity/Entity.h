@@ -27,6 +27,14 @@ class Entity
         Entity() = default;
 
         /**
+         * @brief Construct a new Entity object with a custom name and health amount.
+         * 
+         * @param aName Name of the new entity object.
+         * @param healthAmount Base health for the new entity object.
+         */
+        Entity(std::string aName, int healthAmount);
+
+        /**
          * @brief Destructor has default use.
          * 
          */
@@ -66,9 +74,16 @@ class Entity
          * 
          * @param outs The output stream to send the Entity string representation to.
          */
-        virtual void Display(std::ostream& outs) const = 0;
+        virtual void Display(std::ostream& outs) const;
 
 
 };
+
+inline
+std::ostream& operator<<(std::ostream& outs, const Entity& src)
+{
+    src.Display(outs);
+    return outs;
+}
 
 #endif

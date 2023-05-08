@@ -1,11 +1,16 @@
+#ifndef ENEMY_H
+#define ENEMY_H
+
+
 #include "Entity.h"
+
 
 /**
  * @brief This class represents the characteristics and functions of an Enemy which
  *        derives from the abstract class Entity.
  * 
  */
-class Enemy : Entity
+class Enemy : public Entity
 {
 
     private:
@@ -37,7 +42,7 @@ class Enemy : Entity
          * @brief Destructor for an Enemy object.
          * 
          */
-        ~Enemy();
+        ~Enemy() override;
 
         /**
          * @brief Output a string representation of the Enemy object.
@@ -49,18 +54,4 @@ class Enemy : Entity
 
 };
 
-/**
- * @brief Overload of the stream insertion operator for the Enemy class.
- * 
- * @param outs The output stream that the string representation will be sent to.
- * @param src The Enemy object that is going to be represented as a string
- * 
- * @return The output stream that contains the string representation of the Enemy object.
- */
-inline
-std::ostream& operator<<(std::ostream& outs, const Enemy& src) 
-{
-    src.Display(outs);
-
-    return outs;
-}
+#endif

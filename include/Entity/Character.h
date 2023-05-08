@@ -5,13 +5,13 @@
 #include <string>
 #include <vector>
 #include "Entity.h"
-#include "../Ability/Ability.h"
+#include "../Ability/AbilitySet.h"
 
 /**
  * @brief A class that represents the user that will attack the enemies throughout
  * this application. It inherits from the Entity class.
  */
-class Character : Entity
+class Character : public Entity
 {
     public:
 
@@ -21,7 +21,8 @@ class Character : Entity
     private:
     
         int level;
-        std::vector<Ability> AbilitySet;
+        AbilitySet abilities_known;
+        
 
     public:
 
@@ -42,7 +43,7 @@ class Character : Entity
         /**
          * @brief Destroy a Character object.
          */
-        ~Character();
+        ~Character() override;
 
         /**
          * @brief Construct a copy of a current existing Character object.
@@ -74,25 +75,14 @@ class Character : Entity
          */
         void SetLevel(int aLevel);
 
+        /**
+         * @brief Add an ability to the characters ability set. Wrapper to the add function
+         *        for the AbilitySet class.
+         * 
+         * @param src The ability to add to the characters ability set.
+         */
+        void LearnAbility(Ability&& src);
         
 };
-
-
-/**
- * @brief Overloading of the stream insertion operator for Character object.
- *        Simply a wrapper to it's display method.
- * 
- * @param outs The output stream to send the display method to.
- * @param src The character object to convert to a string representation.
- * 
- * @return The output stream filled with Character object string representation.
- */
-inline
-std::ostream& operator<<(std::ostream& outs, const Character& src)
-{
-    src.Display(outs);
-
-    return outs;
-}
 
 #endif

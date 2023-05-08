@@ -1,23 +1,46 @@
 #include <iostream>
 
-#include "../../include/Ability/AbilitySet.h"
+#include "../../include/Entity/Enemy.h"
+#include "../../include/Entity/Character.h"
+#include "../../include/Entity/EntityGenerator.h"
+
+void Menu();
+void Start(Character&& player1);
 
 int main()
 {
-	
-	AbilitySet set;
 
-	set.add(std::unique_ptr<DefensiveAbility>(new DefensiveAbility("WALL", 10)));
-	set.add(std::unique_ptr<OffensiveAbility>(new OffensiveAbility("BOLT", 35.5)));
-
-	AbilitySet set2(set);
-
-	AbilitySet set3;
-
-	set3 = set2;
-	std::cout << set << set2 << set3;
-
+	Menu();
 	return 0;
 }
 
+void Menu()
+{	
+	int userChoice = 0;
+
+	std::cout << "Welcome to Dom's Turn Based Combat Game.\n"
+			  << "would you like to load a character or start a new one?\n"
+			  << "New Character...\t1\n"
+			  << "Load Character...\t2\n";
+
+	std::cin >> userChoice;
+
+	switch(userChoice)
+	{	
+		case 1:
+			Start(EntityGenerator::CreateNewCharacter());
+			break;
+		case 2:
+			Start(EntityGenerator::LoadCharacter("character_save.txt"));
+			break;
+		default:
+			break;
+	}
+	
+}
+
+void Start(Character&& player1)
+{
+	std::cout << "Starting game... with character " << player1 << '\n';
+}
 
