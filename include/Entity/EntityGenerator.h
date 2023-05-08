@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "Enemy.h"
 #include "Character.h"
+#include <fstream>
 
 /**
  * @brief NEEDS DOCUMENTATION

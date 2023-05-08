@@ -1,5 +1,9 @@
 #include "../../include/Ability/Ability.h"
 
+Ability::Ability(std::string aName, bool isOffensiveType)
+    : isOffensive(isOffensiveType), name(aName)
+{}
+
 std::string Ability::GetName() const
 {
     return this -> name;

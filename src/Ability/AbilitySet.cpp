@@ -8,13 +8,13 @@ AbilitySet::AbilitySet(const AbilitySet& src)
 {
     for(const std::unique_ptr<Ability>& abilityPtr : src)
     {
-        if(dynamic_cast<OffensiveAbility*>(abilityPtr.get()))
+        if(abilityPtr -> IsOffensiveAbiility())
         {
-            this -> add(std::make_unique<OffensiveAbility>(*dynamic_cast<OffensiveAbility*>(abilityPtr.get())));
+            this -> add(std::make_unique<OffensiveAbility>(dynamic_cast<OffensiveAbility&>(*abilityPtr)));
         }
-        else if(dynamic_cast<DefensiveAbility*>(abilityPtr.get()))
+        else if(!(abilityPtr -> IsOffensiveAbiility()))
         {
-            this -> add(std::make_unique<DefensiveAbility>(*dynamic_cast<DefensiveAbility*>(abilityPtr.get())));
+            this -> add(std::make_unique<DefensiveAbility>(dynamic_cast<DefensiveAbility&>(*abilityPtr)));
         }
         else
         {

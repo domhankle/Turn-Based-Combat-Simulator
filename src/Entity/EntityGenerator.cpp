@@ -22,7 +22,12 @@ Character EntityGenerator::CreateNewCharacter()
 
 Character EntityGenerator::LoadCharacter(std::string saveFile)
 {
-    std::cout << "Load Character has not been implemented yet.\n";
+    std::ifstream char_data(saveFile);
+
+    if(!char_data)
+    {
+        std::cerr << "No save file found.\n";
+    }
 
     return Character("Default");
 }

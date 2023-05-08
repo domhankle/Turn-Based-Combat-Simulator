@@ -4,6 +4,12 @@ Character::Character(std::string aName)
     : Entity(aName, 100), level(1)
 {}
 
+Character::Character(std::ifstream& input_file)
+    : Entity(input_file)
+{
+    input_file >> level;
+}
+
 Character::~Character()
 {
     std::cout << "Character Object Destroyed.\n";
@@ -27,15 +33,15 @@ void Character::SetLevel(int aLevel)
 void Character::LearnAbility(Ability&& src)
 {
     
-    
     if(src.IsOffensiveAbiility())
     {
         this -> abilities_known.add(std::make_unique<OffensiveAbility>(dynamic_cast<OffensiveAbility&>(src)));
     }
-    else
+    else if(!(src.IsOffensiveAbiility()))
     {
         this -> abilities_known.add(std::make_unique<DefensiveAbility>(dynamic_cast<DefensiveAbility&>(src)));
     }
+    
 }
 
 void Character::Display(std::ostream& outs) const 

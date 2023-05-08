@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 
 /**
  * @brief The abstract base class that defines base level enemy and character
@@ -33,6 +34,8 @@ class Entity
          * @param healthAmount Base health for the new entity object.
          */
         Entity(std::string aName, int healthAmount);
+
+        Entity(std::ifstream& input_file);
 
         /**
          * @brief Destructor has default use.

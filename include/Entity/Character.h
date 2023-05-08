@@ -2,6 +2,7 @@
 #define CHARACTER_H
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 #include "Entity.h"
@@ -32,6 +33,8 @@ class Character : public Entity
          * 
          */
         Character() = delete;
+
+        Character(std::ifstream& input_file);
 
         /**
          * @brief Construct a new Character object

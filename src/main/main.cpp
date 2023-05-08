@@ -1,4 +1,7 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <cstring>
 
 #include "../../include/Entity/Enemy.h"
 #include "../../include/Entity/Character.h"
@@ -8,9 +11,13 @@ void Menu();
 void Start(Character&& player1);
 
 int main()
-{
+{	
 
-	Menu();
+	std::ifstream file("charactersave.txt");
+	Character ch(file);
+
+	std::cout << ch << std::endl;
+	//Menu();
 	return 0;
 }
 
@@ -31,7 +38,7 @@ void Menu()
 			Start(EntityGenerator::CreateNewCharacter());
 			break;
 		case 2:
-			Start(EntityGenerator::LoadCharacter("character_save.txt"));
+			EntityGenerator::LoadCharacter("character_save.txt");
 			break;
 		default:
 			break;
@@ -41,6 +48,6 @@ void Menu()
 
 void Start(Character&& player1)
 {
-	std::cout << "Starting game... with character " << player1 << '\n';
+	std::cout << "Starting game... with character... \n" << player1 << '\n';
 }
 

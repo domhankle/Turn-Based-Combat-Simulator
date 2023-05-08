@@ -1,16 +1,13 @@
 #include "../../include/Ability/DefensiveAbility.h"
 
 DefensiveAbility::DefensiveAbility()
+    : Ability("Default Defensive Ability", false), resistance_points(0.0)
 {
-    this -> SetName("Default Defensive Ability");
-    this -> SetType(false);
 }
 
 DefensiveAbility::DefensiveAbility(std::string aName, float resistanceAmount)
-    : resistance_points(resistanceAmount)
+    : Ability(aName, false), resistance_points(resistanceAmount)
 {
-    this -> SetName(aName);
-    this -> SetType(false);
 }
 
 DefensiveAbility::DefensiveAbility(const DefensiveAbility& src)

@@ -28,6 +28,14 @@ class Ability
 		Ability() = default;
 
 		/**
+		 * @brief Construct a new Ability object with a custom name and typing.
+		 * 
+		 * @param aName The name of the new ability object.
+		 * @param isOffensiveType True = Offensive Ability, False = Defensive ABility
+		 */
+		Ability(std::string aName, bool isOffensiveType);
+
+		/**
 		 * @brief Copy Constructor set to default use.
 		 * 
 		 * @param src The source to copy.

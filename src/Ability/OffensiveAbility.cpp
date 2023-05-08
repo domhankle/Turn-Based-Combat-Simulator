@@ -2,17 +2,13 @@
 
 
 OffensiveAbility::OffensiveAbility()
-    : damage(0.0)
+    : Ability("Default Offensive Ability", true), damage(0.0)
 {
-    this -> SetName("Default Name");
-    this -> SetType(true);
 }
 
 OffensiveAbility::OffensiveAbility(std::string aName, float damageAmount)
-    : damage(damageAmount)
+    : Ability(aName, true), damage(damageAmount)
 {
-    this -> SetName(aName);
-    this -> SetType(true);
 }
 
 OffensiveAbility::OffensiveAbility(const OffensiveAbility& src)
