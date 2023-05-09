@@ -7,7 +7,13 @@ Character::Character(std::string aName)
 
 Character::~Character()
 {
-    std::cout << "Character Object Destroyed.\n";
+    std::ofstream save("character_save.txt");
+    
+    save.clear();
+    save << *this;
+
+    save.close();
+
 }
 
 Character::Character(const Character& src)
@@ -50,6 +56,11 @@ void Character::Display(std::ostream& outs) const
 
 void Character::Extract(std::istream& ins)
 {
-    ins >> this -> name >> this -> health >> this -> level;
+    std::string garbage;
+
+    ins >> this -> name >> garbage >> this -> health
+        >> garbage >> this -> level;
+    
+    ins >> this -> abilities_known;
 }
 

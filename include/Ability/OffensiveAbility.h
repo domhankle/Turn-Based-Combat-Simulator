@@ -58,6 +58,8 @@ class OffensiveAbility : public Ability
          */
         void display(std::ostream& outs) const override;
 
+        void extract(std::istream& ins);
+
         /**
          * @brief Upgrade the abilities stats accordingly.
          * 

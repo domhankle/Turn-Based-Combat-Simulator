@@ -12,7 +12,7 @@ void Start(Character&& player1);
 
 int main()
 {	
-	
+
 	Menu();
 	return 0;
 }

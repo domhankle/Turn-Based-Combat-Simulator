@@ -52,6 +52,8 @@ class DefensiveAbility : public Ability
          */
         void display(std::ostream& outs) const override;
 
+        void extract(std::istream& ins) override;
+
         /**
          * @brief Every Defensive Ability object has an opportunity to improve it's overall stats.
          * 

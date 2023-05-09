@@ -17,8 +17,17 @@ OffensiveAbility::OffensiveAbility(const OffensiveAbility& src)
 
 void OffensiveAbility::display(std::ostream& outs) const
 {
-    outs << "Name: " << this -> GetName() << " (OFFENSIVE)\n"
+    outs << "(OFFENSIVE)\n"
+         << "Name: " << this -> GetName() << '\n'
          << "Damage: " << this -> GetDamage() << '\n';
+}
+
+void OffensiveAbility::extract(std::istream& ins)
+{
+    std::string garbage;
+
+    ins >> garbage >> this -> name
+        >> garbage >> this -> damage;
 }
 
 void OffensiveAbility::LevelUp()

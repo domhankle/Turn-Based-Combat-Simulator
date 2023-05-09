@@ -1,3 +1,13 @@
-joe
-100
-5
+yerMom
+HP: 100
+Level: 1
+
+ABILITIES:
+(OFFENSIVE)
+Name: Punch
+Damage: 5
+
+(DEFENSIVE)
+Name: Shield
+Resistance: 2.5
+

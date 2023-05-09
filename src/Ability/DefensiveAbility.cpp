@@ -31,6 +31,15 @@ void DefensiveAbility::LevelUp()
 
 void DefensiveAbility::display(std::ostream& outs) const
 {
-    outs << "Name: " << this -> GetName() << " (DEFENSIVE)\n"
+    outs << "(DEFENSIVE)\n"
+         << "Name: " << this -> GetName() << '\n'
          << "Resistance: " << this -> GetResistancePoints() << "\n";
+}
+
+void DefensiveAbility::extract(std::istream& ins)
+{
+    std::string garbage;
+
+    ins >> garbage >> this -> name 
+        >> garbage >> this -> resistance_points;
 }

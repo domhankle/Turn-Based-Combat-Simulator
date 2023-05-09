@@ -29,6 +29,12 @@ void Ability::display(std::ostream& outs) const
     outs << "BASE CLASS DISPLAY CALL\n";
 }
 
+void Ability::extract(std::istream& ins)
+{
+    std::string garbage;
+    ins >> garbage >> this -> name;
+}
+
 void Ability::LevelUp()
 {
     std::cout << "Leveling up " << this -> GetName() << "...\n";

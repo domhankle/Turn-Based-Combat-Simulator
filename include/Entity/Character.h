@@ -62,6 +62,12 @@ class Character : public Entity
          */
         void Display(std::ostream& outs) const override;
 
+        /**
+         * @brief This function extracts values from an input stream and configures them
+         *        properly to a Character object.
+         * 
+         * @param ins The input stream containing the values.
+         */
         void Extract(std::istream& ins) override;
         
         /**

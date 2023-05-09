@@ -90,6 +90,13 @@ class AbilitySet
         void display(std::ostream& outs) const;
 
         /**
+         * @brief Extract data from an input stream and configure the values to an Ability Set object.
+         * 
+         * @param ins The input stream that holds the data.
+         */
+        void extract(std::istream& ins);
+
+        /**
          * @brief Assignment operator overload for Ability Set objects.
          * 
          * @param rhs The Ability Set we want to assign the current object to.
@@ -121,6 +128,13 @@ std::ostream& operator<<(std::ostream& outs, const AbilitySet& src)
 {
     src.display(outs);
     return outs;
+}
+
+inline
+std::istream& operator>>(std::istream& ins, AbilitySet& src)
+{
+    src.extract(ins);
+    return ins;
 }
 
 #endif

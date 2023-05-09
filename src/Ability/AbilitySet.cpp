@@ -70,6 +70,35 @@ void AbilitySet::display(std::ostream& outs) const
     }
 }
 
+void AbilitySet::extract(std::istream& ins)
+{
+    std::string garbage;
+    
+    OffensiveAbility OAbility;
+    DefensiveAbility DAbility;
+
+    ins >> garbage;
+
+    while(ins)
+    {
+        garbage = "";
+        ins >> std::ws >> garbage;
+        if(garbage == "(OFFENSIVE)")
+        {
+            ins >> OAbility;
+            this -> add(std::make_unique<OffensiveAbility>(std::move(OAbility)));
+        }
+        else if(garbage == "(DEFENSIVE)")
+        {
+            ins >> DAbility;
+            this -> add(std::make_unique<DefensiveAbility>(std::move(DAbility)));
+        }
+
+    }
+
+
+}
+
 AbilitySet& AbilitySet::operator=(AbilitySet rhs)
 {
     swap(*this, rhs);

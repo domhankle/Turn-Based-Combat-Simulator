@@ -70,13 +70,19 @@ class Entity
         void SetHealth(int numHealthPoints);
 
         /**
-         * @brief Pure Virtual Function - This function outputs the string value of an Entity
+         * @brief This function outputs the string value of an Entity
          *        object.
          * 
          * @param outs The output stream to send the Entity string representation to.
          */
         virtual void Display(std::ostream& outs) const;
 
+        /**
+         * @brief This function extracts value from an input stream and configures
+         *        the values to an Entity object.
+         * 
+         * @param ins The input stream contatining the values.
+         */
         virtual void Extract(std::istream& ins);
 
 

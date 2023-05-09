@@ -62,6 +62,8 @@ class Ability
 		 */
 		virtual void display(std::ostream& outs) const;
 
+		virtual void extract(std::istream& ins);
+
 		/**
 		 * @brief Set the name of this ability.
 		 * 
@@ -108,4 +110,10 @@ std::ostream& operator<<(std::ostream& outs, const Ability& src)
 	return outs;
 }
 
+inline
+std::istream& operator>>(std::istream& ins, Ability& src)
+{
+	src.extract(ins);
+	return ins;
+}
 #endif
