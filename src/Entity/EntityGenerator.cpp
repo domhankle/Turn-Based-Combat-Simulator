@@ -21,7 +21,8 @@ Character EntityGenerator::CreateNewCharacter()
 }
 
 Character EntityGenerator::LoadCharacter(std::string saveFile)
-{
+{   
+    Character to_return("Default");
     std::ifstream char_data(saveFile);
 
     if(!char_data)
@@ -29,19 +30,22 @@ Character EntityGenerator::LoadCharacter(std::string saveFile)
         std::cerr << "No save file found.\n";
     }
 
-    return Character("Default");
+    char_data >> to_return;
+
+    char_data.close();
+    return to_return;
 }
 
 Enemy EntityGenerator::GenerateEnemy(Enemy&& enemy)
 {
     std::cout << "Generate Enemy has not been implemented yet.\n";
 
-    return Enemy("Default", 100);
+    return Enemy("Default", 100, 10);
 }
 
 Enemy EntityGenerator::GenerateRandomEnemy(std::ifstream& knownEnemies)
 {
     std::cout << "Generate Random Enemy has not been implemented yet.\n";
 
-    return Enemy("Default", 100);
+    return Enemy("Default", 100, 10);
 }

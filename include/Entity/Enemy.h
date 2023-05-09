@@ -15,6 +15,8 @@ class Enemy : public Entity
 
     private:
 
+        float damage;
+
     public:
 
         /**
@@ -28,8 +30,9 @@ class Enemy : public Entity
          * 
          * @param aName The name of this Enemy object will have.
          * @param numHealthPoints The health of this Enemy object.
+         * @param damageAmount The max damage this Enemy can do.
          */
-        Enemy(std::string aName, int numHealthPoints);
+        Enemy(std::string aName, int numHealthPoints, float damageAmount);
 
         /**
          * @brief Construct a new Enemy object as a copy of an existing Enemy object.
@@ -37,7 +40,7 @@ class Enemy : public Entity
          * @param src The existing Enemy object to copy.
          */
         Enemy(const Enemy& src);
-
+        
         /**
          * @brief Destructor for an Enemy object.
          * 
@@ -51,6 +54,24 @@ class Enemy : public Entity
          *             object to.
          */
         void Display(std::ostream& outs) const override;
+
+        void Extract(std::istream& ins) override;
+
+        /**
+         * @brief Set the max damage that the enemy can do.
+         * 
+         * @param damageAmount The max amount of damage this enemy can do.
+         */
+        void SetDamage(float damageAmount);
+
+        /**
+         * @brief Get the max damage an Enemy can do.
+         * 
+         * @return The max damage an enemy can do.
+         */
+        float GetDamage() const;
+
+
 
 };
 

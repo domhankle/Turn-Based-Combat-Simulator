@@ -4,11 +4,6 @@ Entity::Entity(std::string aName, int healthAmount)
     : name(aName), health(healthAmount)
 {}
 
-Entity::Entity(std::ifstream& input_file)
-{
-    input_file >> name >> health;
-}
-
 std::string Entity::GetName() const
 {
     return this -> name;
@@ -32,5 +27,10 @@ void Entity::SetHealth(int numHealthPoints)
 void Entity::Display(std::ostream& outs) const
 {
     outs << "BASE CLASS DISPLAY CALL\n";
+}
+
+void Entity::Extract(std::istream& ins)
+{
+    ins >> this -> name >> this -> health;
 }
 

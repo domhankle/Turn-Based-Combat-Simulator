@@ -12,12 +12,8 @@ void Start(Character&& player1);
 
 int main()
 {	
-
-	std::ifstream file("charactersave.txt");
-	Character ch(file);
-
-	std::cout << ch << std::endl;
-	//Menu();
+	
+	Menu();
 	return 0;
 }
 
@@ -38,7 +34,7 @@ void Menu()
 			Start(EntityGenerator::CreateNewCharacter());
 			break;
 		case 2:
-			EntityGenerator::LoadCharacter("character_save.txt");
+			Start(EntityGenerator::LoadCharacter("character_save.txt"));
 			break;
 		default:
 			break;

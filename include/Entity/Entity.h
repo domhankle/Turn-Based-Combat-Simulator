@@ -35,8 +35,6 @@ class Entity
          */
         Entity(std::string aName, int healthAmount);
 
-        Entity(std::ifstream& input_file);
-
         /**
          * @brief Destructor has default use.
          * 
@@ -79,6 +77,8 @@ class Entity
          */
         virtual void Display(std::ostream& outs) const;
 
+        virtual void Extract(std::istream& ins);
+
 
 };
 
@@ -87,6 +87,13 @@ std::ostream& operator<<(std::ostream& outs, const Entity& src)
 {
     src.Display(outs);
     return outs;
+}
+
+inline
+std::istream& operator>>(std::istream& ins, Entity& src)
+{
+    src.Extract(ins);
+    return ins;
 }
 
 #endif

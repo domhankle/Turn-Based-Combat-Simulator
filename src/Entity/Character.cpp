@@ -4,11 +4,6 @@ Character::Character(std::string aName)
     : Entity(aName, 100), level(1)
 {}
 
-Character::Character(std::ifstream& input_file)
-    : Entity(input_file)
-{
-    input_file >> level;
-}
 
 Character::~Character()
 {
@@ -51,5 +46,10 @@ void Character::Display(std::ostream& outs) const
          << "Level: " << this -> GetLevel() << "\n\n"
          << "ABILITIES:\n"
          << this -> abilities_known;
+}
+
+void Character::Extract(std::istream& ins)
+{
+    ins >> this -> name >> this -> health >> this -> level;
 }
 

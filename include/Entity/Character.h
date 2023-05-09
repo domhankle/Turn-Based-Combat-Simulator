@@ -34,7 +34,6 @@ class Character : public Entity
          */
         Character() = delete;
 
-        Character(std::ifstream& input_file);
 
         /**
          * @brief Construct a new Character object
@@ -63,6 +62,8 @@ class Character : public Entity
          */
         void Display(std::ostream& outs) const override;
 
+        void Extract(std::istream& ins) override;
+        
         /**
          * @brief Get the the level of a the Character Object.
          * 
