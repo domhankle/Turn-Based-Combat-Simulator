@@ -20,7 +20,6 @@ class EntityGenerator
         static Character LoadCharacter(std::string saveFile);
 
         static Enemy GenerateEnemy(Enemy&& enemy);
-        static Enemy GenerateRandomEnemy(std::ifstream& knownEnemies);
 
 };
 

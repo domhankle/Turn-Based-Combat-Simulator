@@ -7,7 +7,7 @@ Character::Character(std::string aName)
 
 Character::~Character()
 {
-    std::ofstream save("character_save.txt");
+    std::ofstream save(CHARACTER_SAVE_PATH);
     
     save.clear();
     save << *this;
@@ -29,6 +29,11 @@ int Character::GetLevel() const
 void Character::SetLevel(int aLevel)
 {
     this -> level = aLevel;
+}
+
+AbilitySet Character::GetKnownAbilities() const
+{
+    return this -> abilities_known;
 }
 
 void Character::LearnAbility(Ability&& src)

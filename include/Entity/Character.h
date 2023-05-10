@@ -8,6 +8,8 @@
 #include "Entity.h"
 #include "../Ability/AbilitySet.h"
 
+const std::string CHARACTER_SAVE_PATH = "Game_Data/character_save.txt";
+
 /**
  * @brief A class that represents the user that will attack the enemies throughout
  * this application. It inherits from the Entity class.
@@ -92,6 +94,13 @@ class Character : public Entity
          * @param src The ability to add to the characters ability set.
          */
         void LearnAbility(Ability&& src);
+
+        /**
+         * @brief Get the abilities known by this character.
+         * 
+         * @return the AbilitySet object that holds all of the abilities known by this character. 
+         */
+        AbilitySet GetKnownAbilities() const;
         
 };
 

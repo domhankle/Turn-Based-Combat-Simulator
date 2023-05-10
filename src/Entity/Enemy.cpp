@@ -27,7 +27,10 @@ void Enemy::Display(std::ostream& outs) const
 
 void Enemy::Extract(std::istream& ins)
 {
-    ins >> this -> name >> this -> health >> this -> damage;
+    std::string garbage;
+    ins >> garbage >> this -> name 
+        >> garbage >> this -> health 
+        >> garbage >> this -> damage;
 }
 
 void Enemy::SetDamage(float damageAmount)

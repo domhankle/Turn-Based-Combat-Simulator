@@ -18,6 +18,7 @@ class Entity
 
         std::string name;
         int health;
+        
 
     public:
 

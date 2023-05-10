@@ -1,0 +1,15 @@
+Name: Goblin
+Health: 25
+Damage: 15.5
+
+Name: Demon
+Health: 15
+Damage: 30
+
+Name: Ghost
+Health: 20
+Damage: 17.5
+
+Name: Giant
+Health: 30
+Damage: 33.3

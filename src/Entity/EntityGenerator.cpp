@@ -43,9 +43,4 @@ Enemy EntityGenerator::GenerateEnemy(Enemy&& enemy)
     return Enemy("Default", 100, 10);
 }
 
-Enemy EntityGenerator::GenerateRandomEnemy(std::ifstream& knownEnemies)
-{
-    std::cout << "Generate Random Enemy has not been implemented yet.\n";
 
-    return Enemy("Default", 100, 10);
-}
