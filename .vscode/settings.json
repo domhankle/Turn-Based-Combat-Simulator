@@ -46,6 +46,7 @@
         "typeinfo": "cpp",
         "fstream": "cpp",
         "*.txt": "plaintext",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "list": "cpp"
     }
 }

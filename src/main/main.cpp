@@ -11,8 +11,9 @@ void Start(Character&& player1);
 
 int main()
 {	
-
-	Menu();
+	Enemy ene1(EntityGenerator::GenerateEnemy(1));
+	std::cout << ene1;
+	//Menu();
 	return 0;
 }
 
@@ -33,7 +34,7 @@ void Menu()
 			Start(EntityGenerator::CreateNewCharacter());
 			break;
 		case 2:
-			Start(EntityGenerator::LoadCharacter("Game_Data/character_save.txt"));
+			Start(EntityGenerator::LoadCharacter(CHARACTER_SAVE_PATH));
 			break;
 		default:
 			break;

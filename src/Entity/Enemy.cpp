@@ -14,7 +14,7 @@ Enemy::Enemy(const Enemy& src)
 
 Enemy::~Enemy()
 {
-    std::cout << "Enemy Object Destroyed.\n";
+   // std::cout << "Enemy Object Destroyed.\n";
 }
 
 

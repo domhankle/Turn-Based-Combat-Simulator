@@ -6,12 +6,18 @@
 #include "Character.h"
 #include <fstream>
 
+
+const std::string ENEMIES_STAGE_1_PATH = "Game_Data/known_enemies_1.txt";
+
 /**
  * @brief NEEDS DOCUMENTATION
  * 
  */
 class EntityGenerator
 {
+
+    private:
+
     public:
 
         EntityGenerator() = delete;
@@ -19,7 +25,7 @@ class EntityGenerator
         static Character CreateNewCharacter();
         static Character LoadCharacter(std::string saveFile);
 
-        static Enemy GenerateEnemy(Enemy&& enemy);
+        static Enemy GenerateEnemy(int stage);
 
 };
 

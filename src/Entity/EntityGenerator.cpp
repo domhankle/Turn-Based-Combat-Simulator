@@ -1,4 +1,8 @@
 #include "../../include/Entity/EntityGenerator.h"
+#include <random>
+
+Enemy GetRandomEnemy(std::string file_path);
+int GetRandomIndex(int maxIndex);
 
 Character EntityGenerator::CreateNewCharacter()
 {
@@ -36,11 +40,45 @@ Character EntityGenerator::LoadCharacter(std::string saveFile)
     return to_return;
 }
 
-Enemy EntityGenerator::GenerateEnemy(Enemy&& enemy)
+Enemy EntityGenerator::GenerateEnemy(int stage)
 {
-    std::cout << "Generate Enemy has not been implemented yet.\n";
+    switch(stage)
+    {
+        case 1:
+            return GetRandomEnemy(ENEMIES_STAGE_1_PATH);
+            
+        default:
+            break;
+    }
 
-    return Enemy("Default", 100, 10);
+    return Enemy("Default Enemy", 100, 10.5);
 }
 
+Enemy GetRandomEnemy(std::string file_path)
+{
+    std::ifstream enemy_file(file_path);
+    std::vector<Enemy> enemies;
 
+    while(enemy_file)
+    {
+        Enemy enemy("Default Enemy", 100, 10.5);
+        enemy_file >> std::ws >> enemy >> std::ws;
+        enemies.push_back(enemy);
+    }
+
+
+    enemy_file.close();
+
+    return enemies.at(GetRandomIndex(enemies.size()-1));
+
+};
+
+int GetRandomIndex(int maxIndex)
+{
+    std::random_device rd;
+    std::mt19937 generator(rd());
+
+    std::uniform_int_distribution<int> distribution(0, maxIndex);
+
+    return distribution(generator);
+}
