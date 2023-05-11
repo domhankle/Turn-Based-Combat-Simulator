@@ -5,6 +5,10 @@
 #include "../Entity/Enemy.h"
 #include "../Entity/EntityGenerator.h"
 
+/**
+ * @brief NEEDS DOCUMENTATION
+ * 
+ */
 class Battle
 {
 
@@ -20,8 +24,17 @@ class Battle
         Battle(Character& aChar, Enemy& aEnemy);
         ~Battle() = default;
 
+        Battle(const Battle& src);
 
+        Battle& operator=(Battle src);
+
+        bool GetBattleStatus() const;
+        void SetBattleStatus(bool aStatus);
+
+        friend
+        void swap(Battle& lhs, Battle& rhs);
 
 };
+
 
 #endif

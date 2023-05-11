@@ -8,6 +8,15 @@ class BattleManager
     private:
 
         Battle currentBattle;
+
+    public:
+
+        BattleManager() = delete;
+        BattleManager(Battle& aBattle);
+        ~BattleManager() = default;
+
+        void SetCurrentBattle(Battle& aBattle);
+        Battle GetCurrentBattle() const;        
 };
 
 #endif

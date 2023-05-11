@@ -8,6 +8,8 @@
 
 
 const std::string ENEMIES_STAGE_1_PATH = "Game_Data/known_enemies_1.txt";
+const std::string ENEMIES_STAGE_2_PATH = "Game_Data/known_enemies_2.txt";
+const std::string ENEMIES_STAGE_3_PATH = "Game_Data/known_enemies_3.txt";
 
 /**
  * @brief NEEDS DOCUMENTATION

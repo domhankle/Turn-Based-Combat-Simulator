@@ -10,9 +10,7 @@ void Menu();
 void Start(Character&& player1);
 
 int main()
-{	
-	Enemy ene1(EntityGenerator::GenerateEnemy(1));
-	std::cout << ene1;
+{
 	//Menu();
 	return 0;
 }
