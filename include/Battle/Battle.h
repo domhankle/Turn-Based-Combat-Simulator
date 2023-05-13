@@ -31,6 +31,9 @@ class Battle
         bool GetBattleStatus() const;
         void SetBattleStatus(bool aStatus);
 
+        Character GetCharacter() const;
+        Enemy GetEnemy() const;
+
         friend
         void swap(Battle& lhs, Battle& rhs);
 

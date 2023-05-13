@@ -3,15 +3,11 @@
 Battle::Battle(Character& aChar, Enemy& aEnemy)
     : character(aChar), enemy(aEnemy), isDefeated(false)
 {
-    std::cout << "You've encountered a " << this -> enemy.GetName() << "!\n"
-              << "Defeat it before it kills you!\n";
 }
 
 Battle::Battle(const Battle& src)
     : character(src.character), enemy(src.enemy), isDefeated(src.isDefeated)
 {
-    std::cout << "You've encountered a " << this -> enemy.GetName() << "!\n"
-              << "Defeat it before it kills you!\n";
 }
 
 bool Battle::GetBattleStatus() const
@@ -22,6 +18,16 @@ bool Battle::GetBattleStatus() const
 void Battle::SetBattleStatus(bool aStatus)
 {
     this -> isDefeated = aStatus;
+}
+
+Character Battle::GetCharacter() const
+{
+    return this -> character;
+}
+
+Enemy Battle::GetEnemy() const
+{
+    return this -> enemy;
 }
 
 Battle& Battle::operator=(Battle src)

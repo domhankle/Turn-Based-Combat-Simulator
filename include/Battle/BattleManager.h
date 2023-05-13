@@ -8,6 +8,7 @@ class BattleManager
     private:
 
         Battle currentBattle;
+        bool playersTurn;
 
     public:
 
@@ -16,7 +17,9 @@ class BattleManager
         ~BattleManager() = default;
 
         void SetCurrentBattle(Battle& aBattle);
-        Battle GetCurrentBattle() const;        
+        Battle GetCurrentBattle() const;
+
+        void PrintBattleState() const;
 };
 
 #endif
