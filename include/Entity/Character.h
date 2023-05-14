@@ -36,7 +36,6 @@ class Character : public Entity
          */
         Character() = delete;
 
-
         /**
          * @brief Construct a new Character object
          * 

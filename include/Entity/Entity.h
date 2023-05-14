@@ -28,6 +28,7 @@ class Entity
          */
         Entity() = default;
 
+
         /**
          * @brief Construct a new Entity object with a custom name and health amount.
          * 

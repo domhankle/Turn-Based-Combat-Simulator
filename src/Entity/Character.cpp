@@ -4,8 +4,7 @@ Character::Character(std::string aName)
     : Entity(aName, 100), level(1)
 {}
 
-
-Character::~Character()
+Character::~Character() 
 {
     std::ofstream save(CHARACTER_SAVE_PATH);
     
@@ -17,7 +16,7 @@ Character::~Character()
 }
 
 Character::Character(const Character& src)
-    : Entity(src.GetName(), src.GetHealth()), level(src.GetLevel())
+    : Entity(src.GetName(), src.GetHealth()), level(src.GetLevel()), abilities_known(src.GetKnownAbilities())
 {
 }
 

@@ -3,4 +3,11 @@ HP: 100
 Level: 1
 
 ABILITIES:
-No abilities known!
+(DEFENSIVE)
+Name: Wall
+Resistance: 15
+
+(OFFENSIVE)
+Name: Jerry Attack
+Damage: 30
+

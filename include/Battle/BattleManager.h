@@ -2,6 +2,8 @@
 #define BATTLE_MANAGER_H
 
 #include "Battle.h"
+#include <iostream>
+#include <limits>
 
 class BattleManager
 {
@@ -9,6 +11,7 @@ class BattleManager
 
         Battle currentBattle;
         bool playersTurn;
+        int playerChoice;
 
     public:
 
@@ -20,6 +23,10 @@ class BattleManager
         Battle GetCurrentBattle() const;
 
         void PrintBattleState() const;
+        void DisplayCharacterChoices() const;
+        void RequestPlayerChoice();
+
+        void InitiateTurn();
 };
 
 #endif

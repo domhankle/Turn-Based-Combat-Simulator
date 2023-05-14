@@ -12,13 +12,6 @@ void Start(Character&& player1);
 
 int main()
 {
-	Character char1("Dom");
-	Enemy ene("Demon", 100, 33);
-	Battle b(char1, ene);
-
-	BattleManager bm(b);
-
-	bm.PrintBattleState();
 	//Menu();
 	return 0;
 }
