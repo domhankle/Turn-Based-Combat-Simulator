@@ -2,9 +2,16 @@
 #define BATTLE_MANAGER_H
 
 #include "Battle.h"
+#include "../Ability/Ability.h"
+#include "../Ability/OffensiveAbility.h"
+#include "../Ability/DefensiveAbility.h"
 #include <iostream>
 #include <limits>
 
+/**
+ * @brief NEEDS DOCUMENTATION
+ * 
+ */
 class BattleManager
 {
     private:
@@ -12,6 +19,7 @@ class BattleManager
         Battle currentBattle;
         bool playersTurn;
         int playerChoice;
+        std::unique_ptr<Ability> currentCharacterAbility;
 
     public:
 
@@ -27,6 +35,8 @@ class BattleManager
         void RequestPlayerChoice();
 
         void InitiateTurn();
+        void DamageCharacter(float damage);
+        void DamageEnemy(float damage);
 };
 
 #endif

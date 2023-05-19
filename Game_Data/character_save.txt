@@ -3,11 +3,11 @@ HP: 100
 Level: 1
 
 ABILITIES:
-(DEFENSIVE)
-Name: Wall
-Resistance: 15
-
 (OFFENSIVE)
-Name: Jerry Attack
+Name: Punch
 Damage: 30
+
+(DEFENSIVE)
+Name: Block
+Resistance: 15
 

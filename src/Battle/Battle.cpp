@@ -22,12 +22,12 @@ void Battle::SetBattleStatus(bool aStatus)
 
 Character Battle::GetCharacter() const
 {
-    return this -> character;
+    return character;
 }
 
 Enemy Battle::GetEnemy() const
 {
-    return this -> enemy;
+    return enemy;
 }
 
 Battle& Battle::operator=(Battle src)

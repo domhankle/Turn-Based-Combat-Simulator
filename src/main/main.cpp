@@ -12,6 +12,23 @@ void Start(Character&& player1);
 
 int main()
 {
+
+	Character char1("Dom");
+	char1.LearnAbility(OffensiveAbility("Punch", 30));
+	char1.LearnAbility(DefensiveAbility("Block", 15));
+
+	Enemy ene1("Demon", 100, 30);
+
+	Battle battle(char1, ene1);
+
+	BattleManager bm(battle);
+
+	/*bm.DisplayCharacterChoices();
+	bm.RequestPlayerChoice();
+	bm.InitiateTurn();
+	bm.PrintBattleState();*/
+
+
 	//Menu();
 	return 0;
 }

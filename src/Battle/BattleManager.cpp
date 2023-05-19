@@ -1,5 +1,7 @@
 #include "../../include/Battle/BattleManager.h"
 
+void DamageCharacter(float damage);
+
 BattleManager::BattleManager(Battle& aBattle)
     : currentBattle(aBattle), playersTurn(false)
 {
@@ -59,14 +61,53 @@ void BattleManager::RequestPlayerChoice()
 {
     player_decision:
 
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
         std::cout << "Make your selection: ";
-        std::cin >> playersTurn;
+        std::cin >> this -> playerChoice;
+    
+    if(std::cin.bad())
+    {
+        goto player_decision;
+    }
 
 }
 
 void BattleManager::InitiateTurn()
+{
+    int count = -1;
+
+    if(!playersTurn)
+    {
+        for(std::unique_ptr<Ability>& abilityPtr : this -> GetCurrentBattle().GetCharacter().GetKnownAbilities())
+        {
+            if(!(abilityPtr -> IsOffensiveAbiility()))
+            {
+                count++;
+            }
+
+            if(count == this -> playerChoice)
+            {
+                DefensiveAbility abilityToUse(dynamic_cast<DefensiveAbility&>(*abilityPtr));
+                this -> DamageCharacter(this -> GetCurrentBattle().GetEnemy().GetDamage() - abilityToUse.GetResistancePoints());
+                break;
+            }
+        }
+    }
+    else
+    {
+        std::cout << this -> GetCurrentBattle().GetCharacter().GetKnownAbilities();
+    }
+}
+
+void BattleManager::DamageCharacter(float damage)
+{
+    if(damage <= 0)
+    {
+        return;
+    }
+    this -> GetCurrentBattle().GetCharacter().SetHealth(this -> GetCurrentBattle().GetCharacter().GetHealth() - damage);
+}
+
+void BattleManager::DamageEnemy(float damage)
 {
 
 }
