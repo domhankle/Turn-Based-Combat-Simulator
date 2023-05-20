@@ -13,7 +13,7 @@ void Start(Character&& player1);
 int main()
 {
 
-	Character char1("Dom");
+	Character char1("Dom", 100, 1);
 	char1.LearnAbility(OffensiveAbility("Punch", 30));
 	char1.LearnAbility(DefensiveAbility("Block", 15));
 
@@ -23,10 +23,16 @@ int main()
 
 	BattleManager bm(battle);
 
-	/*bm.DisplayCharacterChoices();
+	bm.DisplayCharacterChoices();
 	bm.RequestPlayerChoice();
 	bm.InitiateTurn();
-	bm.PrintBattleState();*/
+	bm.PrintBattleState();
+
+	system("clear");
+	bm.DisplayCharacterChoices();
+	bm.RequestPlayerChoice();
+	bm.InitiateTurn();
+	bm.PrintBattleState();
 
 
 	//Menu();

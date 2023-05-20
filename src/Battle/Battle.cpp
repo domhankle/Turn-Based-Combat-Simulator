@@ -30,6 +30,26 @@ Enemy Battle::GetEnemy() const
     return enemy;
 }
 
+void Battle::SetEnemy(Enemy& aEnemy)
+{
+    this -> enemy = aEnemy;
+}
+
+void Battle::SetCharacter(Character& aChar)
+{
+    this -> character = aChar;
+}
+
+void Battle::SetCharacter(Character&& aChar)
+{
+    this -> character = aChar;
+}
+
+void Battle::SetEnemy(Enemy&& aEnemy)
+{
+    this -> enemy = aEnemy;
+}
+
 Battle& Battle::operator=(Battle src)
 {
     swap(*this, src);

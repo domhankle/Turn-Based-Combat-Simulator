@@ -33,6 +33,11 @@ class Battle
 
         Character GetCharacter() const;
         Enemy GetEnemy() const;
+        void SetCharacter(Character& aChar);
+        void SetEnemy(Enemy& aEnemy);
+        
+        void SetCharacter(Character&& aChar);
+        void SetEnemy(Enemy&& aEnemy);
 
         friend
         void swap(Battle& lhs, Battle& rhs);

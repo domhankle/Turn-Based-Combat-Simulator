@@ -19,7 +19,7 @@ class BattleManager
         Battle currentBattle;
         bool playersTurn;
         int playerChoice;
-        std::unique_ptr<Ability> currentCharacterAbility;
+        
 
     public:
 
@@ -35,8 +35,8 @@ class BattleManager
         void RequestPlayerChoice();
 
         void InitiateTurn();
-        void DamageCharacter(float damage);
-        void DamageEnemy(float damage);
+        void DamageCharacter(Battle& aBattle, float damage);
+        void DamageEnemy(Battle& aEnemy, float damage);
 };
 
 #endif

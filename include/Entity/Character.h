@@ -40,8 +40,10 @@ class Character : public Entity
          * @brief Construct a new Character object
          * 
          * @param name The character's name.
+         * @param health The character's health.
+         * @param level The character's level.
          */
-        Character(std::string name);
+        Character(std::string name, int health, int level);
 
         /**
          * @brief Destroy a Character object.

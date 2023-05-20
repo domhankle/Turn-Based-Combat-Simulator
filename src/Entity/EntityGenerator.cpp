@@ -13,7 +13,7 @@ Character EntityGenerator::CreateNewCharacter()
     
     std::cin >> charName;
 
-    Character newChar(charName);
+    Character newChar(charName, 100, 1);
     newChar.LearnAbility(OffensiveAbility("Punch", 5));
     newChar.LearnAbility(DefensiveAbility("Shield", 2.5));
 
@@ -26,7 +26,7 @@ Character EntityGenerator::CreateNewCharacter()
 
 Character EntityGenerator::LoadCharacter(std::string saveFile)
 {   
-    Character to_return("Default");
+    Character to_return("Default", 100, 1);
     std::ifstream char_data(saveFile);
 
     if(!char_data)
