@@ -130,6 +130,13 @@ std::ostream& operator<<(std::ostream& outs, const AbilitySet& src)
     return outs;
 }
 
+/**
+ * @brief Stream extraction operator overload for AbilitySet.
+ * 
+ * @param ins The input stream of data to configure to an AbilitySet object.
+ * @param src The AbilitySet object to configure the data to.
+ * @return The input stream of data for chaining of '>>' situations.
+ */
 inline
 std::istream& operator>>(std::istream& ins, AbilitySet& src)
 {

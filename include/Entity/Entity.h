@@ -90,6 +90,13 @@ class Entity
 
 };
 
+/**
+ * @brief Stream insertion operator overload for Entity
+ * 
+ * @param outs The output stream that will hold Entity data.
+ * @param src The source of the Entity data.
+ * @return The output stream that holds the Entity data for chaining of << situations.
+ */
 inline
 std::ostream& operator<<(std::ostream& outs, const Entity& src)
 {
@@ -97,6 +104,13 @@ std::ostream& operator<<(std::ostream& outs, const Entity& src)
     return outs;
 }
 
+/**
+ * @brief Stream extraction operator overload for Entity
+ * 
+ * @param ins The input stream that holds configuration data for and Entity.
+ * @param src The Entity object to configure the data to.
+ * @return The input stream that holds configuration data for chaining of >> situations.
+ */
 inline
 std::istream& operator>>(std::istream& ins, Entity& src)
 {

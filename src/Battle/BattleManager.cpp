@@ -1,7 +1,5 @@
 #include "../../include/Battle/BattleManager.h"
 
-void DamageCharacter(float damage);
-
 BattleManager::BattleManager(Battle&& aBattle)
     : currentBattle(aBattle), playersTurn(false)
 {

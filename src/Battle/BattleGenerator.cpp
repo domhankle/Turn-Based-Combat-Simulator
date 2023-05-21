@@ -1,6 +1,7 @@
 #include "../../include/Battle/BattleGenerator.h"
 
-Battle BattleGenerator::GenerateBattle(Character& aCharacter, Enemy&& anEnemy)
+Battle BattleGenerator::GenerateBattle(Character& aCharacter, int stage)
 {
-    return Battle(aCharacter, anEnemy);
+    Enemy enemy_to_battle = EntityGenerator::GenerateEnemy(stage);
+    return Battle(aCharacter, enemy_to_battle);
 }

@@ -21,7 +21,7 @@ int main()
 	char1.LearnAbility(OffensiveAbility("Thunder Strike", 55));
 
 
-	BattleManager bm(BattleGenerator::GenerateBattle(char1, EntityGenerator::GenerateEnemy(1)));
+	BattleManager bm(BattleGenerator::GenerateBattle(char1, 1));
 	bm.BattleLoop();
 
 	
