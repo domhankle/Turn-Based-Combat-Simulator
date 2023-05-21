@@ -3,7 +3,7 @@
 
 
 #include "Entity.h"
-
+#include <random>
 
 /**
  * @brief This class represents the characteristics and functions of an Enemy which

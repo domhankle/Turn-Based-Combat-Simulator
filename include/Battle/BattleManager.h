@@ -20,11 +20,10 @@ class BattleManager
         bool playersTurn;
         int playerChoice;
         
-
     public:
-
+    
         BattleManager() = delete;
-        BattleManager(Battle& aBattle);
+        BattleManager(Battle&& aBattle);
         ~BattleManager() = default;
 
         void SetCurrentBattle(Battle& aBattle);
@@ -37,6 +36,8 @@ class BattleManager
         void InitiateTurn();
         void DamageCharacter(Battle& aBattle, float damage);
         void DamageEnemy(Battle& aEnemy, float damage);
+
+        void BattleLoop();
 };
 
 #endif

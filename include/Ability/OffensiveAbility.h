@@ -2,6 +2,7 @@
 #define OFFENSIVE_ABILITY_H
 
 #include "Ability.h"
+#include <random>
 
 /**
  * @brief A derived class of the abstract base Ability class. This class extends functionality

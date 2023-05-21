@@ -5,9 +5,17 @@ Level: 1
 ABILITIES:
 (OFFENSIVE)
 Name: Punch
-Damage: 30
+Damage: 5
 
 (DEFENSIVE)
 Name: Block
-Resistance: 15
+Resistance: 0
+
+(DEFENSIVE)
+Name: Wall
+Resistance: 45
+
+(OFFENSIVE)
+Name: Thunder Strike
+Damage: 55
 

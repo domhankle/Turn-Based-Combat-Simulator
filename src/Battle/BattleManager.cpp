@@ -2,7 +2,7 @@
 
 void DamageCharacter(float damage);
 
-BattleManager::BattleManager(Battle& aBattle)
+BattleManager::BattleManager(Battle&& aBattle)
     : currentBattle(aBattle), playersTurn(false)
 {
 }
@@ -23,6 +23,36 @@ void BattleManager::PrintBattleState() const
               << this ->  currentBattle.GetEnemy().GetHealth() << '\n'
               << '\n' << this -> currentBattle.GetCharacter().GetName() << "'s Health: "
               << this -> currentBattle.GetCharacter().GetHealth() << '\n';
+
+    std::cout << "Hit any key to continue...\n";
+    std::cin.get();
+}
+
+void BattleManager::BattleLoop()
+{
+    while(!(this -> GetCurrentBattle().GetBattleStatus()))
+    {
+        this -> PrintBattleState();
+        this -> DisplayCharacterChoices();
+        this -> RequestPlayerChoice();
+        this -> InitiateTurn();
+    }
+
+    system("clear");
+    if(this -> GetCurrentBattle().GetEnemy().GetHealth() > 0)
+    {
+        std::cout << "The " << this -> GetCurrentBattle().GetEnemy().GetName() << " defeated "
+                  << this -> GetCurrentBattle().GetCharacter().GetName() << ".\n"
+                  << "Try again with a new character!\n";
+        system(EXIT_SUCCESS);
+    }
+    else
+    {
+        std::cout << "You've defeated the " << this -> GetCurrentBattle().GetEnemy().GetName() << "!\n";
+    }
+
+    std::cout << "Hit any key to continue...\n";
+    std::cin.get();
 }
 
 void BattleManager::DisplayCharacterChoices() const
@@ -31,7 +61,9 @@ void BattleManager::DisplayCharacterChoices() const
 
     if(this -> playersTurn)
     {
-        std::cout << "Here is " << this -> currentBattle.GetCharacter().GetName() << "'s attacking options:\n\n";
+        std::cout << "The " << this -> currentBattle.GetEnemy().GetName() << " has "
+                  << this -> currentBattle.GetEnemy().GetHealth() << " HP left!\n"
+                  << "Here is " << this -> currentBattle.GetCharacter().GetName() << "'s attacking options:\n\n";
 
         for(const std::unique_ptr<Ability>& ability : this -> currentBattle.GetCharacter().GetKnownAbilities())
         {
@@ -44,7 +76,10 @@ void BattleManager::DisplayCharacterChoices() const
     }
     else
     {
-        std::cout << "Here is " << this -> currentBattle.GetCharacter().GetName() << "'s defensive options:\n\n";
+        std::cout << "The " << this -> currentBattle.GetEnemy().GetName() << " can do up to "
+                  << this -> currentBattle.GetEnemy().GetDamage() << " damage, defend yourself!\n"
+                  << "Here is " << this -> currentBattle.GetCharacter().GetName() << "'s defensive options:\n\n";
+                  
         for(const std::unique_ptr<Ability>& ability : this -> currentBattle.GetCharacter().GetKnownAbilities())
         {
             if(!(ability -> IsOffensiveAbiility()))
@@ -55,19 +90,21 @@ void BattleManager::DisplayCharacterChoices() const
             }
         }
     }
+
 }
 
 void BattleManager::RequestPlayerChoice()
 {
     player_decision:
 
-        std::cout << "Make your selection: ";
+        std::cout << "\nMake your selection: ";
         std::cin >> this -> playerChoice;
-        std::cin.clear();
     if(std::cin.bad())
     {
         goto player_decision;
     }
+
+    system("clear");
 
 }
 
@@ -101,7 +138,7 @@ void BattleManager::InitiateTurn()
     {
         for(std::unique_ptr<Ability>& abilityPtr : this -> GetCurrentBattle().GetCharacter().GetKnownAbilities())
         {
-            if(!(abilityPtr -> IsOffensiveAbiility()))
+            if(abilityPtr -> IsOffensiveAbiility())
             {
                 count++;
             }
@@ -117,20 +154,26 @@ void BattleManager::InitiateTurn()
         this -> playersTurn = false;
     }
 
+    if(aBattle.GetEnemy().GetHealth() <= 0 || aBattle.GetCharacter().GetHealth() <= 0)
+    {
+        aBattle.SetBattleStatus(true);
+    }
+
     this -> SetCurrentBattle(aBattle);
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 void BattleManager::DamageCharacter(Battle& aBattle, float damage)
 {
-
     if(damage <= 0)
     {
         return;
     }
-    aBattle.SetCharacter(Character(aBattle.GetCharacter().GetName(), 
-                         aBattle.GetCharacter().GetHealth() - damage, 
-                         aBattle.GetCharacter().GetLevel()));
-    
+
+    Character tempChar(aBattle.GetCharacter());
+    tempChar.SetHealth(tempChar.GetHealth() - damage);
+
+    aBattle.SetCharacter(tempChar);
 }
 
 void BattleManager::DamageEnemy(Battle& aBattle, float damage)
@@ -139,7 +182,9 @@ void BattleManager::DamageEnemy(Battle& aBattle, float damage)
     {
         return;
     }
-    aBattle.SetEnemy(Enemy(aBattle.GetEnemy().GetName(),
-                     aBattle.GetEnemy().GetHealth() - damage,
-                     aBattle.GetEnemy().GetDamage()));
+
+    Enemy tempEnemy(aBattle.GetEnemy());
+    tempEnemy.SetHealth(tempEnemy.GetHealth() - damage);
+
+    aBattle.SetEnemy(tempEnemy);
 }

@@ -1,23 +1,23 @@
 #include "../../include/Battle/Battle.h"
 
 Battle::Battle(Character& aChar, Enemy& aEnemy)
-    : character(aChar), enemy(aEnemy), isDefeated(false)
+    : character(aChar), enemy(aEnemy), isComplete(false)
 {
 }
 
 Battle::Battle(const Battle& src)
-    : character(src.character), enemy(src.enemy), isDefeated(src.isDefeated)
+    : character(src.character), enemy(src.enemy), isComplete(src.isComplete)
 {
 }
 
 bool Battle::GetBattleStatus() const
 {
-    return this -> isDefeated;
+    return this -> isComplete;
 }
 
 void Battle::SetBattleStatus(bool aStatus)
 {
-    this -> isDefeated = aStatus;
+    this -> isComplete = aStatus;
 }
 
 Character Battle::GetCharacter() const
@@ -40,16 +40,6 @@ void Battle::SetCharacter(Character& aChar)
     this -> character = aChar;
 }
 
-void Battle::SetCharacter(Character&& aChar)
-{
-    this -> character = aChar;
-}
-
-void Battle::SetEnemy(Enemy&& aEnemy)
-{
-    this -> enemy = aEnemy;
-}
-
 Battle& Battle::operator=(Battle src)
 {
     swap(*this, src);
@@ -62,5 +52,5 @@ void swap(Battle& lhs, Battle& rhs)
 
     swap(lhs.character, rhs.character);
     swap(lhs.enemy, rhs.enemy);
-    swap(lhs.isDefeated, rhs.isDefeated);
+    swap(lhs.isComplete, rhs.isComplete);
 }

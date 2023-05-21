@@ -37,6 +37,13 @@ class Character : public Entity
         Character() = delete;
 
         /**
+         * @brief Construct a new Character object with just a name value.
+         * 
+         * @param name The name of the new character object.
+         */
+        Character(std::string name);
+
+        /**
          * @brief Construct a new Character object
          * 
          * @param name The character's name.

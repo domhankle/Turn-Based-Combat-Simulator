@@ -16,7 +16,7 @@ class Battle
 
         Character character;
         Enemy enemy;
-        bool isDefeated;
+        bool isComplete;
 
     public:
 
@@ -35,9 +35,6 @@ class Battle
         Enemy GetEnemy() const;
         void SetCharacter(Character& aChar);
         void SetEnemy(Enemy& aEnemy);
-        
-        void SetCharacter(Character&& aChar);
-        void SetEnemy(Enemy&& aEnemy);
 
         friend
         void swap(Battle& lhs, Battle& rhs);

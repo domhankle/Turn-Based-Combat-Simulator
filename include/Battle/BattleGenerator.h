@@ -5,7 +5,9 @@
 
 class BattleGenerator
 {
-    static Battle GenerateBattle(Character& aChar, Enemy& aEnemy);
+    public:
+
+        static Battle GenerateBattle(Character& aChar, Enemy&& aEnemy);
 };
 
 #endif

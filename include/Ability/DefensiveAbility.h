@@ -2,6 +2,7 @@
 #define DEFENSIVE_ABILITY_H
 
 #include "Ability.h"
+#include <random>
 
 /**
  * @brief This class inherits from the abstract base class Ability. It represents

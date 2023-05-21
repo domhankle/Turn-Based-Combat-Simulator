@@ -6,6 +6,7 @@
 #include "../../include/Entity/EntityGenerator.h"
 #include "../../include/Battle/Battle.h"
 #include "../../include/Battle/BattleManager.h"
+#include "../../include/Battle/BattleGenerator.h"
 
 void Menu();
 void Start(Character&& player1);
@@ -14,26 +15,16 @@ int main()
 {
 
 	Character char1("Dom", 100, 1);
-	char1.LearnAbility(OffensiveAbility("Punch", 30));
-	char1.LearnAbility(DefensiveAbility("Block", 15));
+	char1.LearnAbility(OffensiveAbility("Punch", 5));
+	char1.LearnAbility(DefensiveAbility("Block", 0));
+	char1.LearnAbility(DefensiveAbility("Wall", 45));
+	char1.LearnAbility(OffensiveAbility("Thunder Strike", 55));
 
-	Enemy ene1("Demon", 100, 30);
 
-	Battle battle(char1, ene1);
+	BattleManager bm(BattleGenerator::GenerateBattle(char1, EntityGenerator::GenerateEnemy(1)));
+	bm.BattleLoop();
 
-	BattleManager bm(battle);
-
-	bm.DisplayCharacterChoices();
-	bm.RequestPlayerChoice();
-	bm.InitiateTurn();
-	bm.PrintBattleState();
-
-	system("clear");
-	bm.DisplayCharacterChoices();
-	bm.RequestPlayerChoice();
-	bm.InitiateTurn();
-	bm.PrintBattleState();
-
+	
 
 	//Menu();
 	return 0;

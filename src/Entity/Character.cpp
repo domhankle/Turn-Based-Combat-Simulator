@@ -4,6 +4,10 @@ Character::Character(std::string aName, int health, int level)
     : Entity(aName, health), level(level)
 {}
 
+Character::Character(std::string aName)
+    : Entity(aName, 100), level(1)
+{}
+
 Character::~Character() 
 {
     std::ofstream save(CHARACTER_SAVE_PATH);
